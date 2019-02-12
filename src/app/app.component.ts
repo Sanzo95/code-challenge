@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'code-challenge';
+
+  listGiornate(): number[] {
+    const list: number[] = [];
+    for (let i = 1; i < 39; i++) {
+      list[i - 1] = i;
+    }
+    return list;
+  }
 }
