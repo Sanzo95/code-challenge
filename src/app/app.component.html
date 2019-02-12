@@ -1,8 +1,9 @@
-<h1>Giornate: </h1>
+<div class="container-fluid">
+  <h1>Giornate: </h1>
 
-<details *ngFor='let matchday of listGiornate()'>
-  <summary>
-    Giornata {{matchday}}
-
-  </summary>
-</details>
+  <ul>
+    <li *ngFor='let matchday of listGiornate()'>
+      <h4>Giornata {{matchday}}</h4>
+    </li>
+  </ul>
+</div>
