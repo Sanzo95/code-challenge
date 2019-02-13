@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Match } from '../models/match';
 import { MatchService } from '../match.service';
 
@@ -17,7 +17,6 @@ export class MatchdayDetailComponent implements OnChanges {
 
   ngOnChanges() {
     const successhandler = response => {
-      console.log(response);
       this.matches = response;
     };
 
