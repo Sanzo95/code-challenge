@@ -1,9 +1,7 @@
-<div class="container-fluid">
-  <h1>Giornate: </h1>
-
-  <ul>
-    <li *ngFor='let matchday of listGiornate()'>
-      <h4>Giornata {{matchday}}</h4>
-    </li>
-  </ul>
-</div>
+<h1>Giornate: </h1>
+<app-matchday-detail *ngIf="selectedid" [id]="selectedid"></app-matchday-detail>
+<details *ngFor="let matchday of listGiornate()" (click)="dayWasSelected(matchday)">
+  <summary>
+    Giornata {{matchday}}
+  </summary>
+</details>
