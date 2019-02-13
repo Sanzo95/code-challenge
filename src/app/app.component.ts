@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatchService } from './match.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selectedid: number;
+
+  constructor(private matchService: MatchService) { }
 
   listGiornate(): number[] {
     const list: number[] = [];
@@ -14,4 +18,9 @@ export class AppComponent {
     }
     return list;
   }
+
+  dayWasSelected(id: number) {
+    this.selectedid = id;
+  }
+
 }
