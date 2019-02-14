@@ -21,8 +21,8 @@ export class Match {
     match.id = json[MatchAttributes.id];
     match.name = json[MatchAttributes.name];
     match.matchday = json[MatchAttributes.matchday];
-    match.homeTeam = Team.fromJson(json[MatchAttributes.homeTeam]);
-    match.awayTeam = Team.fromJson(json[MatchAttributes.awayTeam]);
+    match.homeTeam = Team.matchTeamfromJson(json[MatchAttributes.homeTeam]);
+    match.awayTeam = Team.matchTeamfromJson(json[MatchAttributes.awayTeam]);
 
     return match;
   }

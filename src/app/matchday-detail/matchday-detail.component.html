@@ -1,0 +1,7 @@
+<div *ngIf="matchesSelected">
+<p>DETTAGLIO PARTITA</p>
+
+<ul>
+  <li *ngFor="let match of matchesSelected">{{ match.homeTeam.name}} VS {{ match.awayTeam.name}}</li>
+</ul>
+</div>

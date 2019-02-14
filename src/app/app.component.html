@@ -1,9 +1,9 @@
 <div class="container-fluid">
-  <h1>Giornate: </h1>
+  <app-matchday-detail
+    *ngIf="matchDaySelected"
+    [matchDay]="matchDaySelected"
+    [matches]="matches"
+  ></app-matchday-detail>
+  <app-matchday [matches]="matches" (matchdayOutput)="matchdaySelected($event)"></app-matchday>
 
-  <ul>
-    <li *ngFor='let matchday of listGiornate()'>
-      <h4>Giornata {{matchday}}</h4>
-    </li>
-  </ul>
 </div>

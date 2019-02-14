@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Match } from './models/match';
+import { MatchService } from './match.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  listGiornate(): number[] {
-    const list: number[] = [];
-    for (let i = 1; i < 39; i++) {
-      list[i - 1] = i;
-    }
-    return list;
+
+  matchDaySelected: number;
+
+  matches: Match[] = [];
+
+  constructor(private matchService: MatchService) {
+    this.getMatches();
+  }
+
+  matchdaySelected(id: number) {
+    this.matchDaySelected = id;
+  }
+
+  getMatches() {
+    const successHandler = (response) => {
+      this.matches = response;
+    };
+
+    const errorHandler = (error) => {
+      console.log('errore', error);
+    };
+    this.matchService.getMatches().subscribe(successHandler, errorHandler);
   }
 }
