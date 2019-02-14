@@ -9,7 +9,6 @@ import { MatchService } from './match.service';
 })
 export class AppComponent {
 
-
   matchDaySelected: number;
 
   matches: Match[] = [];
@@ -32,4 +31,6 @@ export class AppComponent {
     };
     this.matchService.getMatches().subscribe(successHandler, errorHandler);
   }
+
+
 }
