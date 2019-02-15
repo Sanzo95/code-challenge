@@ -1,14 +1,31 @@
 <div>
-  <p>DETTAGLIO PARTITA</p>
+  <p>Giornata {{matchSelected?.matchday}} - DETTAGLIO PARTITA ({{matchSelected?.status}})</p>
+
   <ul>
     <li>
-        <img id="crestUrl" *ngIf="matchSelected.homeTeam.crestUrl" [src]="matchSelected.homeTeam.crestUrl"/>
-      <label (click)="teamSelected(matchSelected.homeTeam.id)">{{ matchSelected.homeTeam.name}} </label>
-      {{matchSelected.score.fullTime.homeTeam}} - {{ matchSelected.score.fullTime.homeTeam}}
-      <label (click)="teamSelected(matchSelected.awayTeam.id)">{{ matchSelected.awayTeam.name}}</label>
-      <img id="crestUrl" *ngIf="matchSelected.awayTeam.crestUrl" [src]="matchSelected.awayTeam.crestUrl"/>
+      <label (click)="teamSelected(matchSelected.homeTeam.id)">
+        <img
+          id="crestUrl"
+          *ngIf="matchSelected.homeTeam.crestUrl"
+          [src]="matchSelected.homeTeam.crestUrl"
+        />
+        {{ matchSelected.homeTeam.name }}
+      </label>
+      {{ matchSelected.score.fullTime.homeTeam }} -
+      {{ matchSelected.score.fullTime.homeTeam }}
+      <label (click)="teamSelected(matchSelected.awayTeam.id)"
+        >{{ matchSelected.awayTeam.name }}
+        <img
+          id="crestUrl"
+          *ngIf="matchSelected.awayTeam.crestUrl"
+          [src]="matchSelected.awayTeam.crestUrl"
+      /></label>
     </li>
   </ul>
 </div>
 
-<app-team *ngIf="idTeamSelected" [teamSelected]="idTeamSelected" [squadre]="teams"></app-team>
+<app-team
+  *ngIf="idTeamSelected"
+  [teamSelected]="idTeamSelected"
+  [squadre]="teams"
+></app-team>
