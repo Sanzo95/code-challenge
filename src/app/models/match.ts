@@ -1,11 +1,15 @@
 import { Team } from './team';
+import { Score } from './score';
 
 enum MatchAttributes {
   id = 'id',
   name = 'name',
   matchday = 'matchday',
   homeTeam = 'homeTeam',
-  awayTeam = 'awayTeam'
+  awayTeam = 'awayTeam',
+  status = 'status',
+  score = 'score',
+  utcDate = 'utcDate'
 }
 
 export class Match {
@@ -14,6 +18,9 @@ export class Match {
   matchday: number;
   homeTeam: Team;
   awayTeam: Team;
+  status: string;
+  score: Score;
+  utcDate: string;
 
   static fromJson(json: any): Match {
     const match = new Match();
@@ -23,6 +30,9 @@ export class Match {
     match.matchday = json[MatchAttributes.matchday];
     match.homeTeam = Team.matchTeamfromJson(json[MatchAttributes.homeTeam]);
     match.awayTeam = Team.matchTeamfromJson(json[MatchAttributes.awayTeam]);
+    match.status = json[MatchAttributes.status];
+    match.score = Score.fromJson(json[MatchAttributes.score]);
+    match.utcDate = json[MatchAttributes.utcDate];
 
     return match;
   }
