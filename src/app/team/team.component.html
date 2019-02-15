@@ -1,0 +1,25 @@
+<!-- Visualizzazione dei 20 TEAM  della serie A. occorre spostare tutto in più component e ripulire il this.ts
+  Al click vengono fatte 2 richieste al server: 1 per le competizioni attive e l'altra per i membri della squadra. (ottimizzabile)-->
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let team of squadre"
+    (click)="addInfoSelectedTeam(team.id)"
+  >
+    <p *ngIf="team.name">Denominazione: {{ team.name }}</p>
+    <p *ngIf="team.crestUrl">
+      Logo: <img id="crestUrl" src="{{ team.crestUrl }}" alt="Immagine non disponibile"/>
+    </p>
+    <p *ngIf="team.address">Indirizzo: {{ team.address }}</p>
+    <p *ngIf="team.phone">Telefono: {{ team.phone }}</p>
+    <p *ngIf="team.website">
+      Sito Web: <a href="{{ team.website }}">{{ team.website }}</a>
+    </p>
+    <p *ngIf="team.email">
+      e-Mail: <a href="mailto:{{ team.email }}">{{ team.email }}</a>
+    </p>
+    <p *ngIf="team.founded">Fondazione: {{ team.founded }}</p>
+    <p *ngIf="team.clubColors">Colori del Club: {{ team.clubColors }}</p>
+    <p *ngIf="team.venue">Luogo Designato: {{ team.venue }}</p>
+  </li>
+</ul>

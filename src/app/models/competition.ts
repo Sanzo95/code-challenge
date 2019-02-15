@@ -1,12 +1,11 @@
 import { Area } from './area';
 
-enum CompetitionAttributes {
+export enum CompetitionAttributes {
   id = 'id',
   area = 'area',
   name = 'name',
   code = 'code',
   plan = 'plan',
-  lastUpdated = 'lastUpdated'
 }
 
 export class Competition {
@@ -15,7 +14,6 @@ export class Competition {
   name: string;
   code: string;
   plan: string;
-  lastUpdated: string;
 
   static fromJson(json: any): Competition {
     const competition = new Competition();
@@ -25,7 +23,6 @@ export class Competition {
     competition.name = json[CompetitionAttributes.name];
     competition.code = json[CompetitionAttributes.code];
     competition.plan = json[CompetitionAttributes.plan];
-    competition.lastUpdated = json[CompetitionAttributes.lastUpdated];
 
     return competition;
   }

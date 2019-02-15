@@ -1,5 +1,6 @@
-import { Competition } from './competition';
+import { Competition, CompetitionAttributes } from './competition';
 import { Area } from './area';
+import { SquadMember } from './squadMember';
 
 enum TeamAttributes {
   id = 'id',
@@ -33,7 +34,7 @@ export class Team {
   founded: number; // 1913,
   clubColors: string; // "White / Black",
   venue: string; // "Stadio Ennio Tardini"
-  // squad: Player[];
+  squad: SquadMember[];
 
   static matchTeamfromJson(json: any): Team {
     const team = new Team();
@@ -46,7 +47,6 @@ export class Team {
     const team = new Team();
     team.id = json[TeamAttributes.id];
     team.name = json[TeamAttributes.name];
-    // team.activeCompetitions = Competition.fromJson(TeamAttributes.activeCompetitions);
     team.area = Area.fromJson(json[TeamAttributes.area]);
     team.shortName = json[TeamAttributes.shortName];
     team.tla = json[TeamAttributes.tla];
@@ -60,4 +60,5 @@ export class Team {
     team.venue = json[TeamAttributes.venue];
     return team;
   }
+
 }
