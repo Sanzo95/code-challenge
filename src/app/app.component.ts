@@ -12,6 +12,7 @@ import { TeamService } from './team.service';
 export class AppComponent {
 
   matchDaySelected: number;
+  matchSSelected: number;
 
   matches: Match[] = [];
   teams: Team[] = [];
@@ -23,6 +24,10 @@ export class AppComponent {
 
   matchdaySelected(id: number) {
     this.matchDaySelected = id;
+  }
+
+  matchdSelected(id: number) {
+    this.matchSSelected = id;
   }
 
   getMatches() {

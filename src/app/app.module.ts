@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MatchdayDetailComponent } from './matchday-detail/matchday-detail.component';
 import { MatchdayComponent } from './matchday/matchday.component';
 import { TeamComponent } from './team/team.component';
+import { MatchDetailComponent } from './match-detail/match-detail.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { TeamComponent } from './team/team.component';
     MatchdayDetailComponent,
     MatchdayComponent,
     TeamComponent,
+    MatchDetailComponent,
   ],
   imports: [
     BrowserModule,

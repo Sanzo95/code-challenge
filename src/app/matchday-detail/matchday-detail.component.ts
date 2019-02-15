@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Match } from '../models/match';
 import { MatchService } from '../match.service';
 
@@ -16,12 +16,18 @@ export class MatchdayDetailComponent implements OnChanges {
 
   matchesSelected: Match[] = [];
 
+  matchSSelected: Match;
+
   matchDayString = 'matchDay';
   constructor(private matchService: MatchService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getMatches(changes[this.matchDayString].currentValue);
+  }
+
+  matchSelected(match: Match) {
+    this.matchSSelected = match;
   }
 
   getMatches(id: number) {
@@ -33,18 +39,5 @@ export class MatchdayDetailComponent implements OnChanges {
       }
     }
     this.matchesSelected = matchesTemp;
-    /*const successhandler = response => {
-      console.log(response);
-      this.matches = response;
-    };
-
-    const errorhandler = error => {
-      this.matches = error;
-    };
-
-    this.matchService
-      .getMatchesByDay(id)
-      .subscribe(successhandler, errorhandler);
-*/
   }
 }
