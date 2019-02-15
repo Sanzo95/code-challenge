@@ -2,9 +2,11 @@
   <p>DETTAGLIO PARTITA</p>
   <ul>
     <li>
-      <label>{{ matchSelected.homeTeam.name}} </label> 
-      {{matchSelected.score.fullTime.homeTeam}} - {{ matchSelected.score.fullTime.homeTeam}} 
+        <img id="crestUrl" *ngIf="matchSelected.homeTeam.crestUrl" [src]="matchSelected.homeTeam.crestUrl"/>
+      <label>{{ matchSelected.homeTeam.name}} </label>
+      {{matchSelected.score.fullTime.homeTeam}} - {{ matchSelected.score.fullTime.homeTeam}}
       <label>{{ matchSelected.awayTeam.name}}</label>
+      <img id="crestUrl" *ngIf="matchSelected.awayTeam.crestUrl" [src]="matchSelected.awayTeam.crestUrl"/>
     </li>
   </ul>
 </div>

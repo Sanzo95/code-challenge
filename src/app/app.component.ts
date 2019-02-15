@@ -12,7 +12,6 @@ import { TeamService } from './team.service';
 export class AppComponent {
 
   matchDaySelected: number;
-  matchSSelected: number;
 
   matches: Match[] = [];
   teams: Team[] = [];
@@ -24,10 +23,7 @@ export class AppComponent {
 
   matchdaySelected(id: number) {
     this.matchDaySelected = id;
-  }
-
-  matchdSelected(id: number) {
-    this.matchSSelected = id;
+    this.setTeamOfMatchDay(id);
   }
 
   getMatches() {
@@ -48,6 +44,22 @@ export class AppComponent {
       console.log('errore', error);
     };
     this.teamService.getTeams().subscribe(successHandler, errorHandler);
+  }
+
+  getTeamByID(id: number): Team {
+    for (const team of this.teams) {
+      if (team.id === id) {
+        return team;
+      }
+    }
+    return null;
+  }
+
+  setTeamOfMatchDay(id: number) {
+    for (const match of this.matches) {
+      match.homeTeam.crestUrl = this.getTeamByID(match.homeTeam.id).crestUrl;
+      match.awayTeam.crestUrl = this.getTeamByID(match.awayTeam.id).crestUrl;
+    }
   }
 
 }

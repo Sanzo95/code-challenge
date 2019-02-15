@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Match } from '../models/match';
 import { MatchService } from '../match.service';
+import { Team } from '../models/team';
 
 @Component({
   selector: 'app-matchday-detail',
@@ -13,6 +14,8 @@ export class MatchdayDetailComponent implements OnChanges {
   matchDay: number;
   @Input()
   matches: Match[] = [];
+  @Input()
+  teams: Team[] = [];
 
   matchesSelected: Match[] = [];
 

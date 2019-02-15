@@ -3,6 +3,7 @@
     *ngIf="matchDaySelected"
     [matchDay]="matchDaySelected"
     [matches]="matches"
+    [teams] = "teams"
   ></app-matchday-detail>
   <app-matchday [matches]="matches" (matchdayOutput)="matchdaySelected($event)"></app-matchday>
 
