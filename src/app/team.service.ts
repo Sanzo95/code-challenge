@@ -32,10 +32,7 @@ export class TeamService {
 
   getActiveCompetition(
     id: number,
-    header: HttpHeaders = new HttpHeaders({
-      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
-    })
-  ): Observable<Competition[]> {
+    header: HttpHeaders ): Observable<Competition[]> {
     console.log('richiesta');
     const url = this.BASE_URL + 'teams/' + id;
     const array = 'activeCompetitions';
@@ -48,10 +45,7 @@ export class TeamService {
 
   getSquad(
     id: number,
-    header: HttpHeaders = new HttpHeaders({
-      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
-    })
-  ): Observable<SquadMember[]> {
+    header: HttpHeaders): Observable<SquadMember[]> {
     console.log('richiesta');
     const url = this.BASE_URL + 'teams/' + id;
     const array = 'squad';
