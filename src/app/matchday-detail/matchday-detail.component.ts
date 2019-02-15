@@ -22,7 +22,7 @@ export class MatchdayDetailComponent implements OnChanges {
   matchSSelected: Match;
 
   matchDayString = 'matchDay';
-  constructor(private matchService: MatchService) {
+  constructor() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -34,13 +34,6 @@ export class MatchdayDetailComponent implements OnChanges {
   }
 
   getMatches(id: number) {
-    const matchesTemp: Match[] = [];
-
-    for (const match of this.matches) {
-      if (match.matchday === id) {
-        matchesTemp.push(match);
-      }
-    }
-    this.matchesSelected = matchesTemp;
+    this.matchesSelected = this.matches.filter(e => e.matchday === id);
   }
 }

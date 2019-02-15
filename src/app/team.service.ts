@@ -12,58 +12,53 @@ import { SquadMember } from './models/squadMember';
 export class TeamService {
   BASE_URL = 'http://api.football-data.org/v2/';
 
-  private headers: HttpHeaders[] = [];
-
   constructor(private http: HttpClient) {
-    this.headers[0] = new HttpHeaders({
-      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
-    });
-    this.headers[1] = new HttpHeaders({
-      'X-Auth-Token': '039441a2aed54418a0a05234a1648399'
-    });
-    this.headers[2] = new HttpHeaders({
-      'X-Auth-Token': 'eadbe242b10d49b08de6a036d9d969f3'
-    });
-    this.headers[3] = new HttpHeaders({
-      'X-Auth-Token': '551c8548b0fe456784ba41fe2ba552e3'
-    });
   }
 
-  getTeams(): Observable<Team[]> {
+  getTeams(
+    header: HttpHeaders = new HttpHeaders({
+      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
+    })
+  ): Observable<Team[]> {
+    console.log('richiesta');
     const url = this.BASE_URL + 'competitions/SA/teams';
     const array = 'teams';
-    const index = Math.floor(Math.random() * this.headers.length);
-    return this.http
-      .get(url, { headers: this.headers[index] })
-      .pipe(
-        map((response: any[]) => {
-          return response[array].map(teamJson => Team.fromJson(teamJson));
-        })
-      );
-  }
-
-  getActiveCompetition(id: number): Observable<Competition[]> {
-    const url = this.BASE_URL + 'teams/' + id;
-    const index = Math.floor(Math.random() * this.headers.length);
-    return this.http.get(url, { headers: this.headers[index] }).pipe(
-      map((response: any) => {
-        return response['activeCompetitions'].map(teamJson =>
-          Competition.fromJson(teamJson)
-        );
+    return this.http.get(url, { headers: header }).pipe(
+      map((response: any[]) => {
+        return response[array].map(teamJson => Team.fromJson(teamJson));
       })
     );
   }
 
-  getSquad(id: number): Observable<SquadMember[]> {
+  getActiveCompetition(
+    id: number,
+    header: HttpHeaders = new HttpHeaders({
+      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
+    })
+  ): Observable<Competition[]> {
+    console.log('richiesta');
     const url = this.BASE_URL + 'teams/' + id;
-    const index = Math.floor(Math.random() * this.headers.length);
-    return this.http.get(url, { headers: this.headers[index] }).pipe(
+    const array = 'activeCompetitions';
+    return this.http.get(url, { headers: header }).pipe(
       map((response: any) => {
-        return response['squad'].map(teamJson =>
-          SquadMember.fromJson(teamJson)
-        );
+        return response[array].map(teamJson => Competition.fromJson(teamJson));
       })
     );
   }
 
+  getSquad(
+    id: number,
+    header: HttpHeaders = new HttpHeaders({
+      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
+    })
+  ): Observable<SquadMember[]> {
+    console.log('richiesta');
+    const url = this.BASE_URL + 'teams/' + id;
+    const array = 'squad';
+    return this.http.get(url, { headers: header }).pipe(
+      map((response: any) => {
+        return response[array].map(teamJson => SquadMember.fromJson(teamJson));
+      })
+    );
+  }
 }

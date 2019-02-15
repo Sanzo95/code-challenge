@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Match } from '../models/match';
-import { MatchService } from '../match.service';
 
 @Component({
   selector: 'app-matchday',
@@ -14,23 +13,13 @@ export class MatchdayComponent {
   @Output()
   matchdayOutput = new EventEmitter<number>();
 
-  constructor(private matchService: MatchService) {
-
-  }
+  constructor() {}
 
   getMatchDaysAndata(): number[] {
-    const days: number[] = [];
-    for (let i = 1; i < 20; i++) {
-      days[i - 1] = i;
-    }
-    return days;
+   return Array.from({length: 19}, (v, i) => i + 1);
   }
 
   getMatchDaysRitorno(): number[] {
-    const days: number[] = [];
-    for (let i = 20; i < 39; i++) {
-      days[i - 20] = i;
-    }
-    return days;
+    return Array.from({length: 19}, (v, i) => i + 20);
   }
 }

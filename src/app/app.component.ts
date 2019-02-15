@@ -3,6 +3,7 @@ import { Match } from './models/match';
 import { MatchService } from './match.service';
 import { Team } from './models/team';
 import { TeamService } from './team.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,23 @@ import { TeamService } from './team.service';
 })
 export class AppComponent {
 
-  matchDaySelected: number;
-
-  matches: Match[] = [];
-  teams: Team[] = [];
-
   constructor(private matchService: MatchService, private teamService: TeamService) {
+    AppComponent.index = 0;
     this.getMatches();
     this.getTeams();
   }
+
+  private static index: number;
+  private headers: HttpHeaders[] = [
+    new HttpHeaders({'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'}),
+    new HttpHeaders({'X-Auth-Token': '039441a2aed54418a0a05234a1648399'}),
+    new HttpHeaders({'X-Auth-Token': 'eadbe242b10d49b08de6a036d9d969f3'}),
+    new HttpHeaders({'X-Auth-Token': '551c8548b0fe456784ba41fe2ba552e3'})
+  ];
+
+  matchDaySelected: number;
+  matches: Match[] = [];
+  teams: Team[] = [];
 
   matchdaySelected(id: number) {
     this.matchDaySelected = id;
@@ -27,39 +36,49 @@ export class AppComponent {
   }
 
   getMatches() {
-    const successHandler = (response) => {
-      this.matches = response;
+    const errorHandler = error => {
+      console.log('error httprequest' + error);
+      AppComponent.index < this.headers.length
+        ? (AppComponent.index += 1)
+        : (AppComponent.index = 0);
+      this.matchService
+        .getMatches(this.headers[AppComponent.index])
+        .subscribe(response => (this.matches = response), errorHandler);
     };
-    const errorHandler = (error) => {
-      console.log('errore', error);
-    };
-    this.matchService.getMatches().subscribe(successHandler, errorHandler);
+
+    this.matchService
+      .getMatches(this.headers[AppComponent.index])
+      .subscribe(response => (this.matches = response), errorHandler);
   }
+
   getTeams() {
-    const successHandler = (response) => {
-      this.teams = response;
-      console.log(this.teams);
+    const errorHandler = error => {
+      console.log('error httprequest' + error);
+      AppComponent.index < this.headers.length
+        ? (AppComponent.index += 1)
+        : (AppComponent.index = 0);
+      this.teamService
+        .getTeams(this.headers[AppComponent.index])
+        .subscribe(response => (this.teams = response), errorHandler);
     };
-    const errorHandler = (error) => {
-      console.log('errore', error);
-    };
-    this.teamService.getTeams().subscribe(successHandler, errorHandler);
+
+    this.teamService
+      .getTeams(this.headers[AppComponent.index])
+      .subscribe(response => (this.teams = response), errorHandler);
   }
 
   getTeamByID(id: number): Team {
-    for (const team of this.teams) {
-      if (team.id === id) {
-        return team;
-      }
-    }
-    return null;
+    return this.teams.find(t => t.id === id);
   }
 
   setTeamOfMatchDay(id: number) {
     for (const match of this.matches) {
-      match.homeTeam.crestUrl = this.getTeamByID(match.homeTeam.id).crestUrl;
-      match.awayTeam.crestUrl = this.getTeamByID(match.awayTeam.id).crestUrl;
+      match.homeTeam.crestUrl = this.getTeamByID(match.homeTeam.id).crestUrl
+        ? this.getTeamByID(match.homeTeam.id).crestUrl
+        : 'http://placehold.jp/100/ffffff/043c75/400x400.png?text=Image%0ANot%0AFound';
+      match.awayTeam.crestUrl = this.getTeamByID(match.awayTeam.id).crestUrl
+        ? this.getTeamByID(match.awayTeam.id).crestUrl
+        : 'http://placehold.jp/100/ffffff/043c75/400x400.png?text=Image%0ANot%0AFound';
     }
   }
-
 }

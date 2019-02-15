@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  OnInit,
   OnChanges,
   SimpleChanges
 } from '@angular/core';
@@ -29,38 +28,31 @@ export class TeamComponent implements OnChanges {
   }
 
   getTeamFromID(id: number): Team {
-    for (const team of this.squadre) {
-      if (team.id === id) {
-        return team;
-      }
-    }
-    return null;
+    return this.squadre.find(t => t.id === id);
   }
 
   addInfoSelectedTeam(id: number) {
-    this.setActiveCompetitionSelected(id);
-    this.setPlayerTeamSelected(id);
+    this.team.activeCompetitions == null ?
+      this.setActiveCompetitionSelected(id) : false ;
+    this.team.squad == null ?
+     this.setPlayerTeamSelected(id) : false;
   }
 
   setActiveCompetitionSelected(id: number) {
-    const successHandler = response => {
-      this.team.activeCompetitions = response;
-    };
+    console.log('setActiveCompetitionSelected');
     const errorHandler = error => {
-      console.log('errore', error);
+      console.log('getActiveCompetition error', error);
     };
     this.teamService
       .getActiveCompetition(id)
-      .subscribe(successHandler, errorHandler);
+      .subscribe(response => this.team.activeCompetitions = response, errorHandler);
   }
 
   setPlayerTeamSelected(id: number) {
-    const successHandler = response => {
-      this.team.squad = response;
-    };
+    console.log('setPlayerTeamSelected');
     const errorHandler = error => {
-      console.log('errore', error);
+      console.log('getSquad error', error);
     };
-    this.teamService.getSquad(id).subscribe(successHandler, errorHandler);
+    this.teamService.getSquad(id).subscribe(response => this.team.squad = response, errorHandler);
   }
 }

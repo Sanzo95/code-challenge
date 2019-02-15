@@ -10,27 +10,29 @@ import { map } from 'rxjs/operators';
 export class MatchService {
   BASE_URL = 'http://api.football-data.org/v2/competitions/2019/matches';
 
-  private headers = new HttpHeaders({
-    'X-Auth-Token': '039441a2aed54418a0a05234a1648399'
-  });
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getMatches(): Observable<Match[]> {
+  getMatches(header: HttpHeaders = new HttpHeaders({
+      'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
+    })
+  ): Observable<Match[]> {
+    console.log('richiesta');
     const url = this.BASE_URL;
-    return this.http.get(url, { headers: this.headers }).pipe(
+    const array = 'matches';
+    return this.http.get(url, { headers: header }).pipe(
       map((response: any[]) => {
-        return response['matches'].map(matchJson => Match.fromJson(matchJson));
+        return response[array].map(matchJson => Match.fromJson(matchJson));
       })
     );
   }
 
   // non utilizzato
-  getMatchesByDay(id: number): Observable<Match[]> {
+  getMatchesByDay(id: number, header: HttpHeaders): Observable<Match[]> {
     const url = this.BASE_URL + '?matchday=' + id;
-    return this.http.get(url, { headers: this.headers }).pipe(
+    const array = 'matches';
+    return this.http.get(url, { headers: header }).pipe(
       map((response: any[]) => {
-        return response['matches'].map(matchJson => Match.fromJson(matchJson));
+        return response[array].map(matchJson => Match.fromJson(matchJson));
       })
     );
   }

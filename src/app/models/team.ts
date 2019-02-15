@@ -40,6 +40,8 @@ export class Team {
     const team = new Team();
     team.id = json[TeamAttributes.id];
     team.name = json[TeamAttributes.name];
+    team.activeCompetitions = null;
+    team.squad = null;
     return team;
   }
 
@@ -47,6 +49,8 @@ export class Team {
     const team = new Team();
     team.id = json[TeamAttributes.id];
     team.name = json[TeamAttributes.name];
+    team.activeCompetitions = null;
+    team.squad = null;
     team.area = Area.fromJson(json[TeamAttributes.area]);
     team.shortName = json[TeamAttributes.shortName];
     team.tla = json[TeamAttributes.tla];
