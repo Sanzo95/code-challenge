@@ -1,10 +1,13 @@
 <div class="container-fluid">
+  <app-matchday
+    [matches]="matches"
+    (matchdayOutput)="matchdaySelected($event)"
+    >
+  </app-matchday>
   <app-matchday-detail
     *ngIf="matchDaySelected"
     [matchDay]="matchDaySelected"
-    [matches]="matches"
-    [teams] = "teams"
-  ></app-matchday-detail>
-  <app-matchday [matches]="matches" (matchdayOutput)="matchdaySelected($event)"></app-matchday>
-
+    [matches]="matches" [teams]="teams"
+    >
+  </app-matchday-detail>
 </div>

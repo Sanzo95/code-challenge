@@ -18,12 +18,19 @@ export class MatchdayComponent {
 
   }
 
-  getMatchdays(): number[] {
+  getMatchDaysAndata(): number[] {
     const days: number[] = [];
-    for (let i = 1; i < 39; i++) {
+    for (let i = 1; i < 20; i++) {
       days[i - 1] = i;
     }
     return days;
   }
 
+  getMatchDaysRitorno(): number[] {
+    const days: number[] = [];
+    for (let i = 20; i < 39; i++) {
+      days[i - 20] = i;
+    }
+    return days;
+  }
 }
