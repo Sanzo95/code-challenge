@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { Team } from '../models/team';
 import { TeamService } from '../team.service';
 
@@ -7,12 +13,20 @@ import { TeamService } from '../team.service';
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.css']
 })
-export class TeamComponent {
-
+export class TeamComponent implements OnChanges {
   @Input()
   squadre: Team[] = [];
 
-  constructor(private teamService: TeamService) { }
+  @Input()
+  teamSelected: number;
+
+  team: Team;
+  constructor(private teamService: TeamService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.team = this.getTeamFromID(this.teamSelected);
+    this.addInfoSelectedTeam(this.teamSelected);
+  }
 
   getTeamFromID(id: number): Team {
     for (const team of this.squadre) {
@@ -29,23 +43,22 @@ export class TeamComponent {
   }
 
   setActiveCompetitionSelected(id: number) {
-    const successHandler = (response) => {
-      this.getTeamFromID(id).activeCompetitions = response;
-      console.log(this.squadre);
+    const successHandler = response => {
+      this.team.activeCompetitions = response;
     };
-    const errorHandler = (error) => {
+    const errorHandler = error => {
       console.log('errore', error);
     };
-    this.teamService.getActiveCompetition(id).subscribe(successHandler, errorHandler);
+    this.teamService
+      .getActiveCompetition(id)
+      .subscribe(successHandler, errorHandler);
   }
 
   setPlayerTeamSelected(id: number) {
-    const successHandler = (response) => {
-      this.getTeamFromID(id).squad = response;
-      console.log(this.squadre);
-
+    const successHandler = response => {
+      this.team.squad = response;
     };
-    const errorHandler = (error) => {
+    const errorHandler = error => {
       console.log('errore', error);
     };
     this.teamService.getSquad(id).subscribe(successHandler, errorHandler);
