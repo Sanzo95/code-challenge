@@ -1,0 +1,9 @@
+.FINISHED:after{
+    color: green;
+    content: "Partita Terminata";
+}
+
+.SCHEDULED:after{
+    color: red;
+    content: "Partita da Disputare";
+}

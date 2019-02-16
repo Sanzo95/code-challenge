@@ -1,6 +1,9 @@
 <div>
-  <p>Giornata {{matchSelected?.matchday}} - DETTAGLIO PARTITA ({{matchSelected?.status}})</p>
-
+  <p>Giornata {{matchSelected?.matchday}} - DETTAGLI PARTITA</p>
+  <p><label>Stato:</label><label class='{{matchSelected?.status}}'> </label></p>
+  {{toDate(this.matchSelected.utcDate)}}
+  <p><label>Giorno:</label> {{date}}</p>
+  <p><label>Ora inizio:</label> {{time}}</p>
   <ul>
     <li>
       <label (click)="teamSelected(matchSelected.homeTeam.id)">
@@ -11,8 +14,8 @@
         />
         {{ matchSelected.homeTeam.name }}
       </label>
-      {{ matchSelected.score.fullTime.homeTeam }} -
-      {{ matchSelected.score.fullTime.homeTeam }}
+      {{ checkResult(matchSelected.score.fullTime.homeTeam) }} -
+      {{ checkResult(matchSelected.score.fullTime.homeTeam) }}
       <label (click)="teamSelected(matchSelected.awayTeam.id)"
         >{{ matchSelected.awayTeam.name }}
         <img
