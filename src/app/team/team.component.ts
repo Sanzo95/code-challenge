@@ -58,7 +58,6 @@ export class TeamComponent implements OnChanges {
       }
     }
     TeamComponent.count++;
-    console.log(this.headers[TeamComponent.index]);
   }
 
   setActiveCompetitionSelected(id: number) {

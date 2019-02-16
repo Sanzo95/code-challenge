@@ -3,7 +3,7 @@
 
   <ul>
     <li>
-      <label (click)="teamSelected(matchSelected.homeTeam.id)">
+      <label (click)="teamSelected(matchSelected.homeTeam.id)"  routerLink="matchday/matchday-detail/match-detail/team/{{matchSelected?.homeTeam.id}}">
         <img
           id="crestUrl"
           *ngIf="matchSelected.homeTeam.crestUrl"
@@ -13,7 +13,8 @@
       </label>
       {{ matchSelected.score.fullTime.homeTeam }} -
       {{ matchSelected.score.fullTime.homeTeam }}
-      <label (click)="teamSelected(matchSelected.awayTeam.id)"
+      <label (click)="teamSelected(matchSelected.awayTeam.id)" routerLink="matchday/matchday-detail/match-detail/team/{{matchSelected?.awayTeam.id}}"
+
         >{{ matchSelected.awayTeam.name }}
         <img
           id="crestUrl"

@@ -6,6 +6,7 @@ import { MatchdayDetailComponent } from './matchday-detail/matchday-detail.compo
 import { MatchdayComponent } from './matchday/matchday.component';
 import { TeamComponent } from './team/team.component';
 import { MatchDetailComponent } from './match-detail/match-detail.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MatchDetailComponent } from './match-detail/match-detail.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

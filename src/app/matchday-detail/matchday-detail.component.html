@@ -1,12 +1,15 @@
 <div>
   <p>GIORNATA {{matchDay}} - ELENCO PARTITE</p>
-
+<nav> <a >
   <ul class="list-inline">
-        <li class="list-group-item" *ngFor="let match of matchesSelected" (click)="matchSelected(match)">
+        <li class="list-group-item" *ngFor="let match of matchesSelected" (click)="matchSelected(match)"
+        routerLink="matchday/matchday-detail/match-detail/{{match.id}}">
         <img id="crestUrl" *ngIf="match.homeTeam.crestUrl" [src]="match.homeTeam.crestUrl"/>
           {{ match.homeTeam.name}} VS {{ match.awayTeam.name}}
         <img id="crestUrl" *ngIf="match.awayTeam.crestUrl" [src]="match.awayTeam.crestUrl" />
     </li>
   </ul>
+</a></nav>
 </div>
+<!--<router-outlet></router-outlet>-->
 <app-match-detail *ngIf="matchSSelected" [matchSelected]="matchSSelected" [teams]="teams"></app-match-detail>

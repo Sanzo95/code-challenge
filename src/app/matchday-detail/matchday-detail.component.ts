@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Match } from '../models/match';
-import { MatchService } from '../match.service';
 import { Team } from '../models/team';
 
 @Component({

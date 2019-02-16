@@ -20,7 +20,6 @@ export class TeamService {
       'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
     })
   ): Observable<Team[]> {
-    console.log('richiesta');
     const url = this.BASE_URL + 'competitions/SA/teams';
     const array = 'teams';
     return this.http.get(url, { headers: header }).pipe(
@@ -33,7 +32,6 @@ export class TeamService {
   getActiveCompetition(
     id: number,
     header: HttpHeaders ): Observable<Competition[]> {
-    console.log('richiesta');
     const url = this.BASE_URL + 'teams/' + id;
     const array = 'activeCompetitions';
     return this.http.get(url, { headers: header }).pipe(
@@ -46,7 +44,6 @@ export class TeamService {
   getSquad(
     id: number,
     header: HttpHeaders): Observable<SquadMember[]> {
-    console.log('richiesta');
     const url = this.BASE_URL + 'teams/' + id;
     const array = 'squad';
     return this.http.get(url, { headers: header }).pipe(

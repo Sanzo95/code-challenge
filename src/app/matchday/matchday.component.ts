@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Match } from '../models/match';
+import { Team } from '../models/team';
 
 @Component({
   selector: 'app-matchday',
@@ -8,7 +9,11 @@ import { Match } from '../models/match';
 })
 export class MatchdayComponent {
   @Input()
+  matchDay: number;
+  @Input()
   matches: Match[] = [];
+  @Input()
+  teams: Team[] = [];
 
   @Output()
   matchdayOutput = new EventEmitter<number>();

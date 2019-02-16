@@ -5,6 +5,7 @@
     <li class="list-group-item text-center"
     *ngFor="let matchday of getMatchDaysAndata()"
     (click)="matchdayOutput.emit(matchday)"
+    routerLink="/matchday/matchday-detail/{{matchday}}"
     >
     {{ matchday }}
   </li>
@@ -15,8 +16,15 @@
    <li class="list-group-item text-center"
     *ngFor="let matchday of getMatchDaysRitorno()"
     (click)="matchdayOutput.emit(matchday)"
+    routerLink="/matchday/matchday-detail/{{matchday}}"
     >
     {{ matchday }}
   </li>
 </ul>
-
+<app-matchday-detail
+    *ngIf="matchDay"
+    [matchDay]="matchDay"
+    [matches]="matches"
+    [teams]="teams"
+    >
+  </app-matchday-detail>

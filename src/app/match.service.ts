@@ -16,7 +16,6 @@ export class MatchService {
       'X-Auth-Token': 'aa89ef54a73b4df6a2e389906426b90b'
     })
   ): Observable<Match[]> {
-    console.log('richiesta');
     const url = this.BASE_URL;
     const array = 'matches';
     return this.http.get(url, { headers: header }).pipe(
