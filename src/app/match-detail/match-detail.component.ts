@@ -26,12 +26,9 @@ export class MatchDetailComponent {
 
   toDate(d: string) {
     let a = d.split('T');
-    let date = a[0].split('-').reverse().join('/');
-    let time = "";
-    let timea = a[1].substr(0, 2);
-    timea === "00" ? time = "??:??" : time = String(Number(timea) + 1).concat(a[1].substr(2, 3));
-    this.date = date;
-    this.time = time;
+    this.date = a[0].split('-').reverse().join('/');
+    let time = a[1].substr(0, 2);
+    this.time = time === "00" ? "??:??" : String(Number(time) + 1).concat(a[1].substr(2, 3));
   }
 
   checkResult(res: string) {
