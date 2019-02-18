@@ -17,6 +17,6 @@ Lanciare `cd code-challenge` per posizionarsi nella cartella del progetto 'code-
 Lanciare `ng serve` per avviare il server. Navigare in [http://localhost:4200/](http://localhost:4200/) per visualizzare il sito della Serie A 2018/2019 contenente il tabellone con le 38 giornate.
 
 # Sviluppi futuri
-Utilizzare il routing per:
+Implementare il routing per:
 - Partita e Dettaglio Partita
 - Squadra e Dettaglio Squadra
