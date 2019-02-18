@@ -1,9 +1,14 @@
-.FINISHED:after{
+.FINISHED:after {
     color: green;
     content: "Partita Terminata";
 }
 
-.SCHEDULED:after{
+.SCHEDULED:after {
     color: red;
-    content: "Partita da Disputare";
+    content: "Partita Programmata";
+}
+
+.POSTPONED:after {
+    color: yellow;
+    content: "Partita Rinviata";
 }
