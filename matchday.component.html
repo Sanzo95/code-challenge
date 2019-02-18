@@ -1,0 +1,21 @@
+
+<ul class="list-inline">
+  <div class="box d-inline text-center pagination-centered">Girone<br>Andata</div>
+    <li class="listbox list-group-item text-center"
+    *ngFor="let matchday of getMatchDaysAndata()"
+    (click)="matchdayOutput.emit(matchday)"
+    >
+    {{ matchday }}
+  </li>
+</ul>
+
+<ul class="list-inline">
+  <div class=" box d-inline text-center pagination-centered">Girone<br>Ritorno</div>
+   <li class="listbox list-group-item text-center"
+    *ngFor="let matchday of getMatchDaysRitorno()"
+    (click)="matchdayOutput.emit(matchday)"
+    >
+    {{ matchday }}
+  </li>
+</ul>
+
