@@ -6,7 +6,7 @@
     -webkit-border-radius: 20px 20px 0 0;
     border-radius: 20px 20px 0 0;
     border:1px solid white;
-    width: 1463px;
+    width: 100%;
     color: #FFFFFF;
     background: #43129ead;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
@@ -14,7 +14,7 @@
 
 .listbox{
     height: 40px;
-    width: 77px;
+    width: 5.26%;
     background: #43129ead;
     text-decoration: white;
     text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18, 14px 12px 14px rgba(28,110,164,0.48);
