@@ -1,27 +1,22 @@
 # CodeChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+Il progetto Code Challenge è stato realizzato da: Gianluca Parisi, Francesco Sanzone, Tritto Raffaele.
 
-## Development server
+Esso è stato sviluppato con [Angular CLI](https://github.com/angular/angular-cli) versione 7.3.1, [Bootstrap](https://getbootstrap.com/docs/3.3/) versione 3.3.7, [JQuery](https://jquery.com/) versione 3.3.1, il [modulo HTTP](https://angular.io/api/http/HttpModule) versione 7.2.4.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Per buildarlo occorre:
 
-## Code scaffolding
+## 0. Scaricare il progetto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Lanciare `git clone https://github.com/Sanzo95/code-challenge.git`. Saranno scaricati tutti i file sorgenti nella cartella corrente.
 
-## Build
+## 1. Installare le dipendenze
+Lanciare `cd code-challenge` per posizionarsi nella cartella del progetto 'code-challenge'. Infine, per installare le dipendenze `npm install`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## 2. Avviare il server
+Lanciare `ng serve` per avviare il server. Navigare in [http://localhost:4200/](http://localhost:4200/) per visualizzare il sito della Serie A 2018/2019 contenente il tabellone con le 38 giornate.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Sviluppi futuri
+Utilizzare il routing per:
+- Partita e Dettaglio Partita
+- Squadra e Dettaglio Squadra
